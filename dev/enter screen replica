@@ -6,6 +6,7 @@ HEIGHT = 480
 
 current_screen = "menu"
 high_score = 0
+score = 0
 
 def update(delta_time):
     pass
@@ -20,18 +21,23 @@ def on_draw():
         arcade.draw_text('T for timer', WIDTH/2 - 40, HEIGHT/2 - 40, arcade.color.BLACK)
     elif current_screen == "high score":
         arcade.draw_text('High score Screen', WIDTH/2, HEIGHT/2, arcade.color.BLACK)
+        arcade.draw_text(str(high_score), WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
         arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
     elif current_screen == "timer":
         arcade.draw_text('Timer Screen', WIDTH / 2, HEIGHT / 2, arcade.color.BLACK)
-        arcade.draw_text('Escape to go back', WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
 
 
 def on_key_press(key, modifiers):
-    global current_screen
+    global current_screen, high_score
 
     if current_screen == "menu":
         if key == arcade.key.H:
             current_screen = "high score"
+            f = open("high_score", "r")
+            high_score = f.read()
+            f.close()
+
         elif key == arcade.key.T:
             current_screen = "timer"
     elif current_screen == "high score":
@@ -74,20 +80,13 @@ def draw_menu():
                      arcade.color.BLACK, font_size=20, anchor_x="center")
 
 
-def draw_instructions():
-    arcade.set_background_color(arcade.color.BLUE_GRAY)
-    arcade.draw_text("Instructions", WIDTH/2, HEIGHT/2,
-                     arcade.color.BLACK, font_size=30, anchor_x="center")
-    arcade.draw_text("ESC to go back", WIDTH/2, HEIGHT/2-60,
-                     arcade.color.BLACK, font_size=20, anchor_x="center")
+def draw_high_score():
+    arcade.draw_text(score, WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+
+def draw_timer():
+    pass
 
 
-def draw_play():
-    arcade.set_background_color(arcade.color.ORANGE_RED)
-    arcade.draw_text("Play", WIDTH/2, HEIGHT/2,
-                     arcade.color.BLACK, font_size=30, anchor_x="center")
-
-    arcade.draw_circle_filled(ball_x, 100, 30, arcade.color.WHITE)
 
 
 if __name__ == '__main__':
