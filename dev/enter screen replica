@@ -5,6 +5,7 @@ WIDTH = 640
 HEIGHT = 480
 
 current_screen = "menu"
+high_score = 0
 
 def update(delta_time):
     pass
