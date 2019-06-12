@@ -1,13 +1,14 @@
-import arcade
-import random
-import time
 
-high_score = 0
+import arcade
+
+
 WIDTH = 640
 HEIGHT = 480
-scramble = ['L', 'L2', 'L*', 'R', 'R2', 'R*', 'D', 'D2', 'D*', 'B', 'B*', 'B2', 'F', 'F2', 'F*', 'U', 'U2', 'U*']
+elapsed_time = 9
 
 current_screen = "menu"
+high_score = 0
+score = 0
 
 def update(delta_time):
     pass
@@ -22,61 +23,33 @@ def on_draw():
         arcade.draw_text('T for timer', WIDTH/2 - 40, HEIGHT/2 - 40, arcade.color.BLACK)
     elif current_screen == "high score":
         arcade.draw_text('High score Screen', WIDTH/2, HEIGHT/2, arcade.color.BLACK)
+        arcade.draw_text(str(high_score), WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
         arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
     elif current_screen == "timer":
         arcade.draw_text('Timer Screen', WIDTH / 2, HEIGHT / 2, arcade.color.BLACK)
-        arcade.draw_text('Escape to go back', WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
 
 
 def on_key_press(key, modifiers):
-    global current_screen
+    global current_screen, high_score
 
     if current_screen == "menu":
         if key == arcade.key.H:
             current_screen = "high score"
+            f = open("high_score", "r")
+            high_score = f.read()
+            f.close()
+
         elif key == arcade.key.T:
             current_screen = "timer"
-while len(scramble) < 21:
-                    random.shuffle(scramble)
-                    print(scramble)
-
-                    start = input("Press enter to start the time")
-
-                    print("SOLVE")
-
-                    begin = time.time()
-
-                    endtimer = input("Press enter to stop the timer")
-
-                    end = time.time()
-
-                    elapsed = end - begin
-
-                    elapsed = float(elapsed)
-
-                    elapsed = round(elapsed, 2)
-
-                    if high_score == 0:
-                        high_score = elapsed
-                        print('The high score is', high_score, "Seconds")
-
-                    if elapsed < high_score:
-                        f = open("high_score", "r+")
-                        f.write(str(elapsed))
-                        f.close()
-                        print("the high score is", elapsed, "Seconds")
-
-                    print("The time you took is", elapsed, "Seconds")
-
-                    f = open("high_score", "w+")
-                    f.write(str(elapsed))
-                    f.close()
-                    f = open("high_score", "r+")
-                    if f.mode == "r+":
-                        score = f.read()
-                        print(score)
-                        f.close()
-
+            if key == arcade.key.SPACE:
+                arcade.draw_text("Solve", WIDTH/2 -60, HEIGHT/2 - 60, arcade.color.BLACK)
+    elif current_screen == "high score":
+        if key == arcade.key.ESCAPE:
+            current_screen = "menu"
+    elif current_screen == "timer":
+        if key == arcade.key.ESCAPE:
+            current_screen = "menu"
 
 
 
@@ -111,21 +84,92 @@ def draw_menu():
                      arcade.color.BLACK, font_size=20, anchor_x="center")
 
 
-def draw_instructions():
-    arcade.set_background_color(arcade.color.BLUE_GRAY)
-    arcade.draw_text("Instructions", WIDTH/2, HEIGHT/2,
-                     arcade.color.BLACK, font_size=30, anchor_x="center")
-    arcade.draw_text("ESC to go back", WIDTH/2, HEIGHT/2-60,
-                     arcade.color.BLACK, font_size=20, anchor_x="center")
+def draw_high_score():
+    arcade.draw_text(score, WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+
+def draw_timer():
+    pass
 
 
-def draw_play():
-    arcade.set_background_color(arcade.color.ORANGE_RED)
-    arcade.draw_text("Play", WIDTH/2, HEIGHT/2,
-                     arcade.color.BLACK, font_size=30, anchor_x="center")
-
-    arcade.draw_circle_filled(ball_x, 100, 30, arcade.color.WHITE)
 
 
 if __name__ == '__main__':
     setup()
+    arcade.draw_text('menu Screen', WIDTH/2, HEIGHT/2, arcade.color.BLACK)
+    arcade.draw_text('H for high score', WIDTH/2 - 20, HEIGHT/2 - 20, arcade.color.BLACK)
+    arcade.draw_text('T for timer', WIDTH/2 - 40, HEIGHT/2 - 40, arcade.color.BLACK)
+elif current_screen == "high score":
+    arcade.draw_text('High score Screen', WIDTH/2, HEIGHT/2, arcade.color.BLACK)
+    arcade.draw_text(str(high_score), WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+    arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
+elif current_screen == "timer":
+    arcade.draw_text('Timer Screen', WIDTH / 2, HEIGHT / 2, arcade.color.BLACK)
+    arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
+
+
+def on_key_press(key, modifiers):
+    global current_screen, high_score
+
+    if current_screen == "menu":
+        if key == arcade.key.H:
+            current_screen = "high score"
+            f = open("high_score", "r")
+            high_score = f.read()
+            f.close()
+
+        elif key == arcade.key.T:
+            current_screen = "timer"
+            arcade.draw_text(score, WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+
+    elif current_screen == "high score":
+        if key == arcade.key.ESCAPE:
+            current_screen = "menu"
+    elif current_screen == "timer":
+        if key == arcade.key.ESCAPE:
+            current_screen = "menu"
+
+
+
+def on_key_release(key, modifiers):
+    pass
+
+
+def on_mouse_press(x, y, button, modifiers):
+    pass
+
+
+def setup():
+    arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
+    arcade.set_background_color(arcade.color.WHITE)
+    arcade.schedule(update, 1/60)
+
+    # Override arcade window methods
+    window = arcade.get_window()
+    window.on_draw = on_draw
+    window.on_key_press = on_key_press
+    window.on_key_release = on_key_release
+    window.on_mouse_press = on_mouse_press
+
+    arcade.run()
+
+
+def draw_menu():
+    arcade.set_background_color(arcade.color.WHITE_SMOKE)
+    arcade.draw_text("timer", WIDTH/2, HEIGHT/2,
+                     arcade.color.BLACK, font_size=30, anchor_x="center")
+    arcade.draw_text("H for HIgh score", WIDTH/2, HEIGHT/2-60,
+                     arcade.color.BLACK, font_size=20, anchor_x="center")
+
+
+def draw_high_score():
+    pass
+def draw_timer():
+    pass
+
+
+
+
+if __name__ == '__main__':
+    setup()
+
+
