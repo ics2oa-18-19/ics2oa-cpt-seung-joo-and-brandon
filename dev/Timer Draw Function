@@ -5,6 +5,7 @@ import time
 WIDTH = 640
 HEIGHT = 480
 elapsed_time = 0
+timing = True
 
 current_screen = "menu"
 high_score = 0
@@ -12,9 +13,9 @@ high_score = 0
 
 def update(delta_time):
     global elapsed_time
-    elapsed_time += delta_time
-    elapsed_time = round(elapsed_time, 2)
-
+    if timing == True:
+        elapsed_time += delta_time
+        elapsed_time = round(elapsed_time, 2)
 
 def on_draw():
     arcade.start_render()
@@ -41,7 +42,7 @@ def on_draw():
 
 
 def on_key_press(key, modifiers):
-    global current_screen, high_score, elapsed_time
+    global current_screen, high_score, elapsed_time, timing
 
     if current_screen == "menu":
         if key == arcade.key.H:
@@ -56,9 +57,10 @@ def on_key_press(key, modifiers):
     elif current_screen == "start":
         if key == arcade.key.ESCAPE:
                 current_screen = "menu"
-        elif key == arcade.key.SPACE:
+        if key == arcade.key.SPACE:
                 current_screen = "timer"
                 elapsed_time = 0
+                timing = True
 
 
     elif current_screen == "high score":
@@ -68,6 +70,9 @@ def on_key_press(key, modifiers):
     elif current_screen == "timer":
         if key == arcade.key.ESCAPE:
             current_screen = "menu"
+        elif key == arcade.key.SPACE:
+            timing = False
+
 
 
 
@@ -103,10 +108,16 @@ def draw_menu():
 
 
 def draw_high_score():
-    arcade.draw_text(score, WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
+    arcade.draw_text(high_score, WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
 
 def draw_timer():
     pass
+
+
+
+
+if __name__ == '__main__':
+    setup()
 
 
 
