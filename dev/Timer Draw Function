@@ -1,3 +1,4 @@
+
 import arcade
 import time
 
@@ -30,20 +31,37 @@ def on_draw():
     arcade.start_render()
     # Draw in here...
     if current_screen == "menu":
-        arcade.draw_text('menu Screen', WIDTH/2, HEIGHT/2, arcade.color.BLACK)
-        arcade.draw_text('H for high score', WIDTH/2 - 20, HEIGHT/2 - 20, arcade.color.BLACK)
-        arcade.draw_text('S for start screen', WIDTH/2 - 40, HEIGHT/2 - 40, arcade.color.BLACK)
+        arcade.draw_text('menu Screen', WIDTH/2, HEIGHT/2, arcade.color.GUPPIE_GREEN)
+        arcade.draw_text('H for high score', WIDTH/2 - 20, HEIGHT/2 - 20, arcade.color.GUPPIE_GREEN)
+        arcade.draw_text('S for start screen', WIDTH/2 - 40, HEIGHT/2 - 40, arcade.color.GUPPIE_GREEN)
+        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
+        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(320, 0, 250, 360, arcade.color.ORANGE)
     elif current_screen == "high score":
-        arcade.draw_text('High score Screen', WIDTH/2, HEIGHT/2, arcade.color.BLACK)
-        arcade.draw_text(str(high_score), WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.BLACK)
-        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
+        arcade.draw_text('High score Screen', WIDTH/2, HEIGHT/2, arcade.color.GUPPIE_GREEN)
+        arcade.draw_text(str(high_score), WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.GUPPIE_GREEN)
+        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.GUPPIE_GREEN)
+        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
+        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
     elif current_screen == "start":
-        arcade.draw_text('start Screen', WIDTH / 2, HEIGHT / 2, arcade.color.BLACK)
-        arcade.draw_text('press space to start timer', WIDTH / 2 -40, HEIGHT / 2-40 , arcade.color.BLACK)
-        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.BLACK)
+        arcade.draw_text('start Screen', WIDTH / 2, HEIGHT / 2, arcade.color.GUPPIE_GREEN)
+        arcade.draw_text('press space to start timer', WIDTH / 2 -40, HEIGHT / 2-40 , arcade.color.GUPPIE_GREEN)
+        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.GUPPIE_GREEN)
+        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
+        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
     elif current_screen == "timer":
-        arcade.draw_text('solve', WIDTH / 2, HEIGHT / 2, arcade.color.BLACK)
-        arcade.draw_text(str(elapsed_time), WIDTH / 2-40, HEIGHT / 2-40, arcade.color.BLACK)
+        arcade.draw_text('solve', WIDTH / 2, HEIGHT / 2, arcade.color.GUPPIE_GREEN)
+        arcade.draw_text(str(elapsed_time), WIDTH / 2-40, HEIGHT / 2-40, arcade.color.GUPPIE_GREEN)
+        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
+        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
 
     elif current_screen == "score":
         arcade.draw_text(str())
@@ -95,7 +113,7 @@ def on_mouse_press(x, y, button, modifiers):
 
 def setup():
     arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
-    arcade.set_background_color(arcade.color.WHITE)
+    arcade.set_background_color(arcade.color.BLUE)
     arcade.schedule(update, 1/60)
 
     # Override arcade window methods
@@ -127,6 +145,9 @@ def draw_timer():
 
 if __name__ == '__main__':
     setup()
+
+
+
 
 
 
