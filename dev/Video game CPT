@@ -2,8 +2,8 @@ import arcade
 
 
 
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 1360
+HEIGHT = 710
 elapsed_time = 0
 timing = True
 score = 0
@@ -44,40 +44,59 @@ def on_draw():
     arcade.start_render()
     # Draw in here...
     if current_screen == "menu":
-        arcade.draw_text('menu Screen', WIDTH/2, HEIGHT/2, arcade.color.GUPPIE_GREEN)
-        arcade.draw_text('H for high score', WIDTH/2 - 20, HEIGHT/2 - 20, arcade.color.GUPPIE_GREEN)
-        arcade.draw_text('S for start screen', WIDTH/2 - 40, HEIGHT/2 - 40, arcade.color.GUPPIE_GREEN)
-        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
-        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
-        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
-        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
-        arcade.draw_rectangle_filled(320, 0, 250, 360, arcade.color.ORANGE)
+        arcade.draw_text('Menu Screen', WIDTH/2 - 400, HEIGHT/2, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text('H for high score', WIDTH/2 - 400 , HEIGHT/2 - 100, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text('S for start screen', WIDTH/2 - 400 , HEIGHT/2 - 200, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 200, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 200, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 200, 80, 80, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 120, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 120, 80, 80, arcade.color.RED)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 120, 80, 80, arcade.color.ORANGE)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 40, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 40, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 40, 80, 80, arcade.color.ORANGE)
+
+
+        # arcade.draw_rectangle_filled(320, 0, 250, 360, arcade.color.ORANGE)
     elif current_screen == "high score":
-        arcade.draw_text('High score Screen', WIDTH/2, HEIGHT/2, arcade.color.GUPPIE_GREEN)
-        arcade.draw_text(str(high_score), WIDTH / 2 - 40, HEIGHT / 2 - 40, arcade.color.GUPPIE_GREEN)
-        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.GUPPIE_GREEN)
-        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
-        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
-        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
-        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
-        arcade.draw_rectangle_filled(320, 0, 250, 360, arcade.color.ORANGE)
+        arcade.draw_text('High score Screen', WIDTH/2 - 400, HEIGHT/2, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text(str(high_score), WIDTH / 2-400, HEIGHT / 2 - 100, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text('Escape to go back', WIDTH / 2-400, HEIGHT / 2 - 200, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 200, 80, 80, arcade.color.RED)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 200, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 200, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 120, 80, 80, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 120, 80, 80, arcade.color.RED)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 120, 80, 80, arcade.color.ORANGE)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 40, 80, 80, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 40, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 40, 80, 80, arcade.color.YELLOW)
     elif current_screen == "start":
-        arcade.draw_text('start Screen', WIDTH / 2, HEIGHT / 2, arcade.color.GUPPIE_GREEN)
-        arcade.draw_text('press space to start timer', WIDTH / 2 -40, HEIGHT / 2-40 , arcade.color.GUPPIE_GREEN)
-        arcade.draw_text('Escape to go back', WIDTH / 2 - 20, HEIGHT / 2 - 20, arcade.color.GUPPIE_GREEN)
-        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
-        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
-        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
-        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
-        arcade.draw_rectangle_filled(320, 0, 250, 360, arcade.color.ORANGE)
+        arcade.draw_text('Start Screen', WIDTH / 2-400, HEIGHT / 2, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text('Press space to start timer', WIDTH / 2-400, HEIGHT / 2-100 , arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text('Escape to go back', WIDTH / 2-400, HEIGHT / 2 - 200, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 200, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 200, 80, 80, arcade.color.RED)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 200, 80, 80, arcade.color.ORANGE)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 120, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 120, 80, 80, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 120, 80, 80, arcade.color.ORANGE)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 40, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 40, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 40, 80, 80, arcade.color.WHITE)
     elif current_screen == "timer":
-        arcade.draw_text('solve', WIDTH / 2, HEIGHT / 2, arcade.color.GUPPIE_GREEN)
-        arcade.draw_text(str(elapsed_time), WIDTH / 2-40, HEIGHT / 2-40, arcade.color.GUPPIE_GREEN)
-        arcade.draw_rectangle_filled(0, 480, 400, 400, arcade.color.RED)
-        arcade.draw_rectangle_filled(640, 480, 400, 400, arcade.color.YELLOW)
-        arcade.draw_rectangle_filled(0, 0, 400, 360, arcade.color.GREEN)
-        arcade.draw_rectangle_filled(640, 0, 400, 360, arcade.color.WHITE)
-        arcade.draw_rectangle_filled(320, 0, 250, 360, arcade.color.ORANGE)
+        arcade.draw_text('Solve', WIDTH / 2 - 100, HEIGHT / 2, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_text(str(elapsed_time), WIDTH / 2 -100, HEIGHT / 2 - 100, arcade.color.GUPPIE_GREEN, 80)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 200, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 200, 80, 80, arcade.color.RED)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 200, 80, 80, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 120, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 120, 80, 80, arcade.color.WHITE)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 120, 80, 80, arcade.color.YELLOW)
+        arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 40, 80, 80, arcade.color.ORANGE)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 80, HEIGHT - 40, 80, 80, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 40, 80, 80, arcade.color.ORANGE)
 
 
 def on_key_press(key, modifiers):
