@@ -87,7 +87,7 @@ def on_draw():
         arcade.draw_rectangle_filled(WIDTH / 2 - 160, HEIGHT - 40, 80, 80, arcade.color.WHITE)
     elif current_screen == "timer":
         arcade.draw_text('Solve', WIDTH / 2 - 100, HEIGHT / 2, arcade.color.GUPPIE_GREEN, 80)
-        arcade.draw_text('Press space to start timer', WIDTH / 2 - 300, HEIGHT / 2 - 150, arcade.color.GUPPIE_GREEN, 50)
+        arcade.draw_text('Press space to stop timer', WIDTH / 2 - 300, HEIGHT / 2 - 150, arcade.color.GUPPIE_GREEN, 50)
         arcade.draw_text('esc to escape', WIDTH / 2 - 600, HEIGHT / 2 - 300, arcade.color.GUPPIE_GREEN, 50)
         arcade.draw_text(str(elapsed_time), WIDTH / 2 -100, HEIGHT / 2 - 100, arcade.color.GUPPIE_GREEN, 80)
         arcade.draw_rectangle_filled(WIDTH / 2, HEIGHT - 200, 80, 80, arcade.color.GREEN)
