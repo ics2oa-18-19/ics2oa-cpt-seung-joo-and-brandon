@@ -1,4 +1,4 @@
-import arcade
+import arcad
 
 
 WIDTH = 640
